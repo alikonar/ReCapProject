@@ -11,8 +11,61 @@ namespace ConsoleUI
         {
             //CarManagerTest();
             //BrandManagerTest();
-            ColorManagerTest();
+            //ColorManagerTest();
+            //CustomerManagerTest();
+            //UserManagerTest();
+            RentalManagerTest();
 
+
+
+            void RentalManagerTest()
+            {
+                RentalManager rentalManager = new RentalManager(new EfRentalDal());
+                var result = rentalManager.Add(new Rental
+                {
+                    CarId = 2,
+                    CustomerId = 3,
+                    RentalId = 6,
+                    RentDate = new DateTime(2021, 2, 5, 11, 30, 00),
+                    ReturnDate = null,
+
+
+                });
+                Console.WriteLine(result.Success);
+                Console.WriteLine(result.Message);
+          
+            }
+
+            void UserManagerTest()
+            {
+                UserManager userManager = new UserManager(new EfUserDal());
+                var result = userManager.GetAll();
+                if (result.Success)
+                {
+                    foreach (var user in result.Data)
+                    {
+                        Console.WriteLine(user.FirstName+"-"+user.LastName+"-"+user.Email);
+                    }
+                    Console.WriteLine(result.Message);
+                }
+            }
+
+            void CustomerManagerTest()
+            {
+                CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+                var result = customerManager.GetAll();
+                if (result.Success)
+                {
+                    foreach (var customer in result.Data)
+                    {
+                        Console.WriteLine(customer.CustomerId);
+                        Console.WriteLine(customer.CompanyName);
+
+                        
+                    }
+                    Console.WriteLine(result.Message);
+                }
+            }
 
             void ColorManagerTest()
             {
