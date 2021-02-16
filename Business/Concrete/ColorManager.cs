@@ -22,40 +22,40 @@ namespace Business.Concrete
         {
             if (color.ColorName.Length<2)
             {
-                return new ErrorResult(Messages.CarsNameInValid);
+                return new ErrorResult(Messages.ColorNameInValid);
             }
             _colorDal.Add(color);
-            return new SuccessResult(Messages.CarAdded);
+            return new SuccessResult(Messages.ColorAdded);
         }
 
         public IResult Delete(Color color)
         {
             if (color.ColorName.Length<2)
             {
-                return new ErrorResult(Messages.CarsNameInValid);
+                return new ErrorResult(Messages.ColorNameInValid);
             }
             _colorDal.Delete(color);
-            return new SuccessResult(Messages.CarDeleted);
+            return new SuccessResult(Messages.ColorDeleted);
         }
 
         public IDataResult<List<Color>> GetAll()
         {
-            return new SuccessDataResult<List<Color>>(_colorDal.GetAll(),Messages.CarsListed);
+            return new SuccessDataResult<List<Color>>(_colorDal.GetAll(),Messages.ColorsListed);
         }
 
         public IDataResult<List<Color>> GetById(int colorId)
         {
-            return new SuccessDataResult<List<Color>>(_colorDal.GetAll(c => c.ColorId == colorId),Messages.CarsListed);
+            return new SuccessDataResult<List<Color>>(_colorDal.GetAll(c => c.ColorId == colorId),Messages.ColorsListed);
         }
 
         public IResult Update(Color color)
         {
             if (color.ColorName.Length<2)
             {
-                return new ErrorResult(Messages.CarsNameInValid);
+                return new ErrorResult(Messages.ColorNameInValid);
             }
             _colorDal.Update(color);
-            return new SuccessResult(Messages.CarUpdated);
+            return new SuccessResult(Messages.ColorUpdated);
         }
 
 
